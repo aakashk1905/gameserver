@@ -17,7 +17,9 @@ const io = socketIO(server, {
 });
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/multiplayer-game", {});
+mongoose.connect(
+  "mongodb+srv://upskillmafia:upskillmafia694@upskillmafia.vdegzfy.mongodb.net/test"
+);
 
 // Player Schema
 const PlayerSchema = new mongoose.Schema({
@@ -114,6 +116,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("/", (req, res) => res.send("hey there"));
+app.get("/game", (req, res) => res.send("hey there"));
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
