@@ -4,6 +4,7 @@ const http = require("http");
 const socketIO = require("socket.io");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -17,9 +18,7 @@ const io = socketIO(server, {
 });
 
 // MongoDB connection
-mongoose.connect(
-  "mongodb+srv://upskillmafia:upskillmafia694@upskillmafia.vdegzfy.mongodb.net/test"
-);
+mongoose.connect(process.env.MONGODB_URI);
 
 // Player Schema
 const PlayerSchema = new mongoose.Schema({
